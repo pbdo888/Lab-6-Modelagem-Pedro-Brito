@@ -44,8 +44,9 @@ alinhamento 100% com a spec."* — `src/frete.py` voltou às 24 linhas da versã
 | REQ-02 (Grátis) | Sim | `test_frete.py:27`, `test_frete.py:33`, `test_frete.py:39` | `frete.py:8`, `frete.py:14` |
 | CUPOM (Sem Spec) | Removido — sem drift | — | — |
 
-> Os números de linha valem para o commit desta auditoria. No Exercício 3 o valor
-> do limite muda, mas as linhas continuam as mesmas.
+> Os números de linha valem para o commit desta auditoria. No Exercício 3 o limite
+> da REQ-02 mudou para R$ 250,00 (mesmas linhas) e ganhou o teste de regressão
+> `test_frete.py:45` (R$ 200,00 agora paga frete).
 
 ## 3. Passe de Revisão Multidimensional
 
