@@ -1,0 +1,9 @@
+# Ambiente virtual do Python (cada máquina cria o seu; não vai para o Git)
+.venv/
+# Cache de bytecode gerado pelo Python
+__pycache__/
+*.pyc
+# Cache gerado pelo pytest
+.pytest_cache/
+# Configurações locais do PyCharm
+.idea/
