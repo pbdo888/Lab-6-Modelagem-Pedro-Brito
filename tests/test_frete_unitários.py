@@ -1,4 +1,4 @@
-# Suíte de testes da TASK-01, escrita ANTES do código (TDD: fase Red).
+
 # Cada teste traduz uma cláusula EARS de specs/checkout_frete.md em uma verificação automática.
 
 # Importa as duas funções que ainda NÃO existem; na fase Red este import falha de propósito.
