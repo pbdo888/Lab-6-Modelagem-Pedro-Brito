@@ -10,7 +10,7 @@ cálculo de frete de checkout, com TDD (pytest), auditoria de *drift* e spec viv
 | `constitution.md` | Princípios invioláveis do projeto (acima das specs). |
 | `specs/checkout_frete.md` | Spec em notação EARS — Fonte Única da Verdade (SSOT). |
 | `tasks/TASK-01.md` | Task atômica entregue ao agente de IA. |
-| `tests/test_frete.py` | Suíte pytest (escrita antes do código). |
+| `tests/test_frete_unitários.py` | Suíte pytest (escrita antes do código). |
 | `src/frete.py` | Implementação mínima. |
 | `audit_report.md` | Matriz de rastreabilidade + passe multidimensional (Ex. 2). |
 | `pytest.ini` | Faz o pytest achar `src/` e `tests/`. |
@@ -59,3 +59,35 @@ No PyCharm: abra a pasta, selecione o interpretador `.venv` e rode `pytest` no t
 - **Regra de ouro do SDD:** nunca altere o código primeiro; a mudança começa na spec.
 - **Regra inegociável:** spec + testes + código no mesmo commit/PR; PR só com código é rejeitado.
 - **Commit padronizado (Conventional Commits):** `tipo(escopo): descrição` — ex.: `feat(frete): ...`.
+
+---
+
+# Lab 8 — Testes Unitários (AAA, Test Doubles e TDD)
+
+## Onde está cada exercício
+
+| Exercício | Arquivo(s) | O que mostra |
+|---|---|---|
+| 7.1 — Teste unitário AAA | `tests/test_frete_unitario_aaa.py` | REQ-01 e REQ-02 com Arrange, Act e Assert separados (fronteiras R$ 249,99 / 250,00 / 250,01). |
+| 7.2 — Test Doubles | `tests/test_frete_unitário_com_doubles.py` | Um teste isolado com Dummy (usuário), Stub (`ServicoLogisticaAPI`) e Mock (`ServicoNotificacao`). |
+| 7.2 — estudo por papel | `tests/test_frete_doubles_dummy.py`, `tests/test_frete_doubles_stub.py`, `tests/test_frete_doubles_mock.py` | Um arquivo por papel; inclui `patch.dict` (stub) e `wraps=` (spy). |
+| 7.3 — Execução | toda a pasta `tests/` (Labs 7 e 8) | Rodar no PyCharm (`Run 'pytest in tests'`) e registrar o resultado. |
+| 7.4 — TDD | `tests/test_frete_tdd_regiao.py` + `src/frete.py` | REQ-05 (Norte/Nordeste) feita em Red → Green → Refactor. |
+
+Spec atualizada: `specs/checkout_frete.md` (REQ-03 a REQ-05). Tasks novas: `tasks/TASK-02.md` (Ex. 7.2) e
+`tasks/TASK-03.md` (Ex. 7.4).
+
+## Resumo para a prova (Lab 8)
+
+- **Teste unitário:** testa uma unidade (uma função) isolada, rápido e sem rede ou banco de dados.
+- **AAA:** *Arrange* (prepara os dados) → *Act* (executa a função uma vez) → *Assert* (confere o resultado).
+- **Test Double:** qualquer substituto de uma dependência real durante o teste.
+  - **Dummy:** só preenche um parâmetro; nunca é usado.
+  - **Stub:** devolve uma resposta fixa programada (`return_value`); o teste confere o **resultado**.
+  - **Fake:** implementação simplificada que funciona de verdade (ex.: dicionário no lugar do banco).
+  - **Spy:** deixa o código real rodar e anota as chamadas (`wraps=`).
+  - **Mock:** o teste confere as **chamadas** (`assert_called_once_with`, `assert_not_called`).
+- **Quem define o papel é o uso, não a classe:** o mesmo `Mock()` é stub num teste e mock em outro.
+- **`patch` / `patch.dict`:** trocam algo só durante o teste e desfazem a troca sozinhos no final.
+- **TDD:** Red (o teste falha porque o código não existe) → Green (o mínimo para passar) → Refactor (limpar sem mudar o comportamento).
+- **Fronteiras:** "superior a" = `>`; "maior ou igual" / "a partir de" = `>=`. Sempre teste o valor exato do limite.
