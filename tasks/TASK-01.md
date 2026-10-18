@@ -7,7 +7,7 @@
 
 Forneça ao agente **apenas**:
 - `constitution.md`
-- `specs/checkout_frete.md`
+- `specs/checkout_frete.md` 
 - este arquivo (`tasks/TASK-01.md`)
 
 Nunca envie o projeto inteiro (evita alucinação e sobre-implementação).
@@ -18,7 +18,7 @@ Nunca envie o projeto inteiro (evita alucinação e sobre-implementação).
 
 ## Entregáveis
 
-1. `tests/test_frete.py` — suíte pytest para REQ-01 e REQ-02 (criada **antes** do código).
+1. `../tests/test_frete_unitários.py` — suíte pytest para REQ-01 e REQ-02 (criada **antes** do código).
 2. `src/frete.py` — implementação mínima que faz os testes passarem.
 
 ## Critérios de aceite

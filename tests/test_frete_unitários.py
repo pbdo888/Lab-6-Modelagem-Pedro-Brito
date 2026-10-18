@@ -1,4 +1,4 @@
-
+#Testes unitários: cada função isolada, com foco nos valores de fronteira da REQ-02 (>= 250).
 # Cada teste traduz uma cláusula EARS de specs/checkout_frete.md em uma verificação automática.
 
 # Importa as duas funções que ainda NÃO existem; na fase Red este import falha de propósito.
@@ -15,7 +15,7 @@ def test_req01_taxa_padrao_abaixo_do_limite():
 def test_req01_total_soma_frete_ao_subtotal():
     # R$ 100,00 de produtos + R$ 15,00 de frete = R$ 115,00 no total.
     assert calcular_total(100.0) == 115.0
-
+#
 
 # Conecta com: REQ-01 (caso de fronteira) -> um centavo abaixo do limite ainda paga frete.
 def test_req01_um_centavo_abaixo_do_limite_paga_frete():
