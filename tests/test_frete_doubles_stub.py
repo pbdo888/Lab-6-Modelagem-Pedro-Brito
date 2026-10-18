@@ -6,7 +6,8 @@ from unittest.mock import Mock, patch
 
 from frete import calcular_frete, confirmar_frete
 
-# Valores DIFERENTES dos reais (15 e 250) de propósito: com os mesmos valores,
+# Simulando um banco de dadados usando um diciocário com dados DIFERENTES dos reais (15 e 250) de propósito: com os mesmos valores,
+
 # o teste passaria até sem o stub e não provaria nada.
 CONFIG_FALSA = {"taxa_frete": 20.0, "limite": 100.0}
 
@@ -36,6 +37,7 @@ def test_stub_da_configuracao_usa_o_limite_programado():
 def test_stub_servico_logistica_devolve_taxa_fixa():
     # Arrange
     logistica_stub = Mock()
+    #simulando a resposta de dependência externa
     logistica_stub.consultar_taxa.return_value = 30.0  # resposta programada
 
     # Act
